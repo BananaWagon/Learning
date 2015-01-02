@@ -26,30 +26,30 @@ void Board::setSize(int Row, int Col)
 				   has a problem at 127, it moves to -127 and if printed you get
 				   random characters. char can only take single char if initialized to literal 1 / 9
 				   and not anything higher than that.*/
-			pos[i][j] = " ";
-			ipos[i][j] = Empty;
+			Board::pos[i][j] = " ";
+			Board::ipos[i][j] = Empty;
 		}
 	}
 }
 
 int Board::getRow()
 {
-	return nRow;
+	return this->nRow;
 }
 
 int Board::getCol()
 {
-	return nCol;
+	return this->nCol;
 }
 
 void Board::setRow(int row)
 {
-	nRow = row;
+	Board::nRow = row;
 }
 
 void Board::setCol(int col)
 {
-	nCol = col;
+	Board::nCol = col;
 }
 
 
@@ -172,14 +172,14 @@ void Board::drawBoard()
 	}
 }
 
-void Board::printArray(int nRow, int nCol)
+void Board::printArray(int bRow, int bCol)
 {
 	// tests initialized values for array. Far from polished...
 
-	for (int i = 0; i < nRow; i++)
+	for (int i = 0; i < bRow; i++)
 	{
 
-		for (int j = 0; j < nCol; j++)
+		for (int j = 0; j < bCol; j++)
 		{
 			std::cout << i << " x " << j << pos[i][j] << " " << '\t';
 		}
@@ -203,7 +203,7 @@ bool Board::DropPiece(int move, string token)
 	return false;
 }
 
-void Board::setMove(int Row , int Col, string token)
+void Board::setMove(int Row, int Col, string token)
 {
 	pos[Row][Col] = token;
 	ipos[Row][Col] = Taken;

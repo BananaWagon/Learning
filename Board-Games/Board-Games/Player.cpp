@@ -3,7 +3,8 @@
 #include "stdafx.h"
 
 Player::Player()
-{
+{	
+	ipos[100][100] = { 0 };
 	playerToken = " ";
 }
 
@@ -13,6 +14,7 @@ void Player::setState()
 
 	switch (_playerState)
 	{
+	case Uninitialized: _playerState = Player1; break;
 	case Player1:		_playerState = Player2; break;
 	case Player2:		_playerState = Player1; break;
 	}

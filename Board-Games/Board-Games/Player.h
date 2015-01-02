@@ -7,8 +7,8 @@ class Player : public Board
 public:
 	Player();
 
-	enum state { Player1, Player2 };
-	Player::state _playerState = Player1;
+	enum state { Player1, Player2, Uninitialized};
+	Player::state _playerState = Uninitialized;
 	void setState();
 	void whosTurn();
 	std::string getToken(int);

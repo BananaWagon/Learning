@@ -15,7 +15,7 @@ public:
 	void ClearScreen();
 	void drawBoard();
 	void printArray(int, int);
-	void setMove(int Row, int Col, std::string);
+	void setMove(int, int, std::string);
 	bool DropPiece(int, std::string);
 	bool chkWin(std::string);
 		

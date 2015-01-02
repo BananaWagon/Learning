@@ -45,8 +45,8 @@ void Game::gameLoop()
 	{
 	case Game::ShowingMenu: { result = showMenu(); }
 	case Game::Playing:		{ if (result == 1) { C4(); }
-							  if (result == 2) { TicTacToe(); }
-							  cin.get();  break; }
+							  if (result == 2) { TicTacToe(); } 
+							break; }
 	}
 	//_gameState = Exiting;   //<-- uncomment to have game auto exit.
 	//add something to show winner and prompt to "Play again?"
@@ -119,6 +119,7 @@ void Game::TicTacToe()
 	Board TTT;
 	TTT.setSize(3, 3);
 	TTT.drawBoard();
+	
 
 
 	Player _player;
@@ -140,13 +141,13 @@ void Game::TicTacToe()
 				_player.whosTurn();
 				_player.getMove();
 
-				if (TTT.isEmpty(TTT.getCol(), TTT.getCol()))
+				if (TTT.isEmpty(_player.getRow(), _player.getCol()))
 				{
-					TTT.setMove(TTT.getRow(), TTT.getCol(), _player.getToken(_player._playerState));
+					TTT.setMove(_player.getRow(), _player.getCol(), _player.getToken(_player._playerState));
 
 					TTT.drawBoard();
 
-					if (TTT.chkWin(_player.getToken(_player._playerState))) { _gameState = ShowingMenu; return; }
+					if (TTT.chkWin(_player.getToken(_player._playerState))) { _gameState = ShowingMenu; cin.get(); TTT.ClearScreen(); return; }
 
 					break;
 				}
@@ -156,4 +157,4 @@ void Game::TicTacToe()
 	}
 }
 Game::GameState Game::_gameState = Uninitialized;
-Game::GameState Game::_mode	   = Game::Uninitialized;
+Game::GameState Game::_mode	     = Uninitialized;
