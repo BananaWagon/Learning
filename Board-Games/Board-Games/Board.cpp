@@ -13,8 +13,8 @@ Board::Board()
 
 void Board::setSize(int Row, int Col)
 {	
-	bRow = Row;
-	bCol = Col;
+	Board::bRow = Row;
+	Board::bCol = Col;
 
 	// initializes the array to user defined size up to 100 x 100
 	int p_i{ 0 };
@@ -34,12 +34,12 @@ void Board::setSize(int Row, int Col)
 
 int Board::getRow()
 {
-	return this->nRow;
+	return Board::nRow;
 }
 
 int Board::getCol()
 {
-	return this->nCol;
+	return Board::nCol;
 }
 
 void Board::setRow(int row)
@@ -165,7 +165,7 @@ void Board::drawBoard()
 			for (int j = 0; j < 9; j++)
 			{
 				if (j == 0){ cout << " |"; }
-				cout << " " << pos[i][j] << " |";
+				cout << " " << Board::pos[i][j] << " |";
 			}
 			cout << "\n";
 		}
@@ -195,8 +195,13 @@ bool Board::DropPiece(int move, string token)
 	{
 		switch (ipos[i][move])
 		{
-		case Empty: break;
-		case Taken: --i; setMove(i, move, token); return true;
+		case Empty: 
+			//fall
+
+			break;
+		case Taken: 
+			//bounce
+			--i; setMove(i, move, token); return true;
 		}
 
 	}
@@ -232,7 +237,7 @@ bool Board::chkWin(string token)
 bool Board::isEmpty(int Row, int Col)
 {
 	
-	switch (ipos[Row][Col]){
+	switch (Board::ipos[Row][Col]){
 
 	case Empty: return true;
 	case Taken: cout << "Enter valid choice...\n"; return false;

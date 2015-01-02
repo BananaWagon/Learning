@@ -57,10 +57,10 @@ int Player::getMove()
 	case '7': Board::setRow(2); Board::setCol(0); return 6;
 	case '8': Board::setRow(2); Board::setCol(1); return 7;
 	case '9': Board::setRow(2); Board::setCol(2); return 8;
-	default:  break;
+	default: if (move > 9){ std::cout << "!!Not a valid choice...\n"; };
 	}
 	
-	return 0;
+	return 42;
 }
 
 Player::~Player()

@@ -44,12 +44,12 @@ void Game::gameLoop()
 	switch (_gameState)
 	{
 	case Game::ShowingMenu: { result = showMenu(); }
-	case Game::Playing:		{ if (result == 1) { C4(); }
-							  if (result == 2) { TicTacToe(); } 
+	case Game::Playing:		{ if (result == 1) { Game::C4(); }
+							  if (result == 2) { Game::TicTacToe(); } 
 							break; }
 	}
 	//_gameState = Exiting;   //<-- uncomment to have game auto exit.
-	//add something to show winner and prompt to "Play again?"
+	//add something to "Play again?"
 }
 
 int Game::showMenu()
