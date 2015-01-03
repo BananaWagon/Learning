@@ -18,6 +18,8 @@ public:
 	void setMove(int, int, std::string);
 	bool DropPiece(int, std::string);
 	void Fall(int, int, std::string);
+	void Color(int);
+	std::string drawTile(int, int);
 	bool chkWin(std::string);
 		
 	~Board();
@@ -31,6 +33,16 @@ private:
 	int bRow, bCol;
 	int nRow, nCol;
 
-	enum Square {Empty, Taken};
+	struct pieces
+	{
+		enum Color {
+			BLUE = 1, GREEN, CYAN, RED, PURPLE, DRK_YELLOW, DEFAULT, GRAY,
+			BRT_BLUE, BRT_GREEN, BRT_CYAN, BRT_RED, MAGENTA, YELLOW, BRT_WHITE
+		};
+		Color color;
+
+	} piece;
+
+	enum Square {Empty, Taken_X, Taken_O};
 	Square _square;
 };

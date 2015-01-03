@@ -165,7 +165,7 @@ void Board::drawBoard()
 			for (int j = 0; j < 9; j++)
 			{
 				if (j == 0){ cout << " |"; }
-				cout << " " << Board::pos[i][j] << " |";
+				cout << " " << Board::drawTile(i, j) <<""; Color(piece.DEFAULT); cout << " |";
 			}
 			cout << "\n";
 		}
@@ -189,7 +189,7 @@ void Board::printArray(int bRow, int bCol)
 
 bool Board::DropPiece(int move, string token)
 {
-	if (ipos[0][move] == Taken){ return false; }
+	if (ipos[0][move] != Empty){ return false; }
 
 	for (int i = 0; i < 8; i++)
 	{
@@ -200,7 +200,7 @@ bool Board::DropPiece(int move, string token)
 			if (i == 7){ setMove(7, move, token); return true; }
 			break;
 
-		case Taken: 
+		default: 
 			//bounce
 			--i; setMove(i, move, token); return true;
 		}
@@ -217,10 +217,38 @@ void Board::Fall(int x, int y, string token)
 	
 }
 
+void Board::Color(int color)
+{
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+}
+
+string Board::drawTile(int x, int y)
+{
+	
+	switch (ipos[x][y])
+	{
+	
+	case Empty:
+		return Board::pos[x][y];
+		
+
+	case Taken_X:
+		Color(piece.RED);
+		return Board::pos[x][y];
+		
+		
+	case Taken_O:
+		Color(piece.DRK_YELLOW);
+		return Board::pos[x][y];
+		
+	}
+}
+
 void Board::setMove(int Row, int Col, string token)
 {
 	pos[Row][Col] = token;
-	ipos[Row][Col] = Taken;
+	if (token == "X") { ipos[Row][Col] = Taken_X; }
+	else if (token == "O") { ipos[Row][Col] = Taken_O; }
 }
 
 bool Board::chkWin(string token)
@@ -249,7 +277,8 @@ bool Board::isEmpty(int Row, int Col)
 	switch (Board::ipos[Row][Col]){
 
 	case Empty: return true;
-	case Taken: cout << "Enter valid choice...\n"; return false;
+	case Taken_X: cout << "\n\t  !! Slot Full !!\n"; return false;
+	case Taken_O: cout << "\n\t  !! Slot Full !!\n"; return false;
 	}
 	return false;
 }

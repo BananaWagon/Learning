@@ -34,8 +34,8 @@ std::string Player::getToken(int player)
 {
 	switch (player){
 	
-	case 0: return playerToken = "X";
-	case 1: return playerToken = "O";
+	case 0: playerToken = "X"; return playerToken;
+	case 1: playerToken = "O"; return playerToken;
 	}
 	return "?";
 }
