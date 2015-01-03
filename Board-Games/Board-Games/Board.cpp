@@ -186,9 +186,9 @@ void Board::printArray(int bRow, int bCol)
 	}
 }
 
+
 bool Board::DropPiece(int move, string token)
 {
-	if (ipos[7][move] == Empty){ setMove(7, move, token); return true; }
 	if (ipos[0][move] == Taken){ return false; }
 
 	for (int i = 0; i < 8; i++)
@@ -196,9 +196,10 @@ bool Board::DropPiece(int move, string token)
 		switch (ipos[i][move])
 		{
 		case Empty: 
-			//fall
-
+			Board::Fall(i, move, token);
+			if (i == 7){ setMove(7, move, token); return true; }
 			break;
+
 		case Taken: 
 			//bounce
 			--i; setMove(i, move, token); return true;
@@ -206,6 +207,14 @@ bool Board::DropPiece(int move, string token)
 
 	}
 	return false;
+}
+
+void Board::Fall(int x, int y, string token)
+{
+	Board::pos[x][y] = token;
+	Board::drawBoard();
+	if (x != 0){ Board::pos[--x][y] = " "; };
+	
 }
 
 void Board::setMove(int Row, int Col, string token)

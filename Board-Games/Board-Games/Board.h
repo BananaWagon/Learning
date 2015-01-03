@@ -17,6 +17,7 @@ public:
 	void printArray(int, int);
 	void setMove(int, int, std::string);
 	bool DropPiece(int, std::string);
+	void Fall(int, int, std::string);
 	bool chkWin(std::string);
 		
 	~Board();
