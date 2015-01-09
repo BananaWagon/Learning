@@ -6,7 +6,8 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	Game::Start();
+	Game theGame;
+	theGame.Start();
 
 	return 0;
 }

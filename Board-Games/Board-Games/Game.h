@@ -1,20 +1,20 @@
 #pragma once 
+#include "GameBase.h"
+#include "ConnectFour.h"
 
 class Game
 {
 public:
-	static void Start();
-	
+	void Start();
 
 	enum GameState { Uninitialized, ShowingMenu, Playing, Exiting, Single, Multi };
-	static GameState _gameState;
-	static GameState _mode;
+	GameState _gameState;
+	GameState _mode;
 
 private:
-	static void gameLoop();
-	static  int showMenu();
-	static bool IsExiting();
-	static void close();
-	static void C4();
-	static void TicTacToe();
+	void gameLoop();
+	GameBase* showMenu();
+	bool IsExiting();
+	void close();
+	void TicTacToe();
 };

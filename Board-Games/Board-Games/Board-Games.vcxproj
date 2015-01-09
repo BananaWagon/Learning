@@ -80,7 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
+    <ClInclude Include="ConnectFour.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GameBase.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -88,7 +90,9 @@
   <ItemGroup>
     <ClCompile Include="Board-Games.cpp" />
     <ClCompile Include="Board.cpp" />
+    <ClCompile Include="ConnectFour.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
