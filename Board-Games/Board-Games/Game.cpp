@@ -8,12 +8,6 @@ using namespace std;
 
 void Game::Start()
 {
-
-	if (_gameState != Uninitialized)
-	{
-		return;
-	}
-
 	// This is universal and can be used in other programs
 	_gameState = Game::ShowingMenu;
 
@@ -39,20 +33,13 @@ bool Game::IsExiting()
 
 void Game::gameLoop()
 {
-	int result { 0 };
-
-	switch (_gameState)
-	{
-	case Game::ShowingMenu: { result = showMenu(); }
-	case Game::Playing:		{ if (result == 1) { Game::C4(); }
-							  if (result == 2) { Game::TicTacToe(); } 
-							break; }
-	}
+	GameBase* result = showMenu();
+	result->Run();
 	//_gameState = Exiting;   //<-- uncomment to have game auto exit.
 	//add something to "Play again?"
 }
 
-int Game::showMenu()
+GameBase* Game::showMenu()
 {
 	int result{ 0 };
 	while (result == 0)
@@ -67,11 +54,15 @@ int Game::showMenu()
 		cout << "2. Tic Tac Toe\n";
 		cout << "3. Exit\n\n";
 		cin >> result;
-
+		
 		switch (result)
 		{
-		case 1: _gameState = Game::Playing; return result; 
-		case 2: _gameState = Game::Playing; return result; 
+		case 1:
+			_gameState = Game::Playing;
+			return new ConnectFour();
+		case 2:
+			//_gameState = Game::Playing;
+			//return; //TODO: Add a TicTacToe class and return it here.
 		case 3: _gameState = Game::Exiting; break;
 		default: continue;
 		}
@@ -85,32 +76,6 @@ void Game::close()
 
 	cin.get();
 	return;
-}
-
-void Game::C4()
-{
-	Board C4;
-	C4.setSize(8, 9);
-	C4.drawBoard();
-
-	Player players[2];
-	int player {0};
-
-		
-	while (_gameState == Playing)
-	{
-		int col{ 0 };
-		col = players[player].getMove();
-
-		if (!C4.isEmpty( 0, col)){ continue; }
-		
-		C4.DropPiece(col, players[player].getToken(player));
-		
-		C4.drawBoard();
-
-		player = (player + 1) % 2;
-		
-	}
 }
 
 void Game::TicTacToe()
@@ -156,5 +121,3 @@ void Game::TicTacToe()
 		}
 	}
 }
-Game::GameState Game::_gameState = Uninitialized;
-Game::GameState Game::_mode	     = Uninitialized;
