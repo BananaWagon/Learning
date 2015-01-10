@@ -16,5 +16,4 @@ private:
 	GameBase* showMenu();
 	bool IsExiting();
 	void close();
-	void TicTacToe();
 };

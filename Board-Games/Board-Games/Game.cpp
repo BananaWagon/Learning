@@ -17,6 +17,8 @@ void Game::Start()
 	}
 
 	close();
+	
+	return;
 }
 
 bool Game::IsExiting()
@@ -60,9 +62,11 @@ GameBase* Game::showMenu()
 		case 1:
 			_gameState = Game::Playing;
 			return new ConnectFour();
+
 		case 2:
-			//_gameState = Game::Playing;
-			//return; //TODO: Add a TicTacToe class and return it here.
+			_gameState = Game::Playing;
+			return new TicTacToe(); 
+
 		case 3: _gameState = Game::Exiting; break;
 		default: continue;
 		}
@@ -78,46 +82,3 @@ void Game::close()
 	return;
 }
 
-void Game::TicTacToe()
-{
-	// Initializes array to null 3x3 to show a blank board. 
-	Board TTT;
-	TTT.setSize(3, 3);
-	TTT.drawBoard();
-	
-
-
-	Player _player;
-
-	// This is the actual game loop. Total of 9 turns.
-
-	// Consider making a loop to get inputs, update, draw. Could make the code below easier.
-	for (int i = 0; i < 3; i++)
-	{
-		for (int j = 0; j < 3; j++)
-		{
-			//sets player state after loop back
-			_player.setState();
-
-			// Loop will not break unless chkMove evaluates to true
-			while (_player._playerState == Player::Player1 || Player::Player2)
-			{
-
-				_player.whosTurn();
-				_player.getMove();
-
-				if (TTT.isEmpty(_player.getRow(), _player.getCol()))
-				{
-					TTT.setMove(_player.getRow(), _player.getCol(), _player.getToken(_player._playerState));
-
-					TTT.drawBoard();
-
-					if (TTT.chkWin(_player.getToken(_player._playerState))) { _gameState = ShowingMenu; cin.get(); TTT.ClearScreen(); return; }
-
-					break;
-				}
-				continue;
-			}
-		}
-	}
-}
