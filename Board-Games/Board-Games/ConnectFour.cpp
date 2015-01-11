@@ -22,12 +22,16 @@ int ConnectFour::Run()
 	int player{ 0 };
 
 	//TODO: Change the GameState so the players can exit
-	_gameState = 0;
-	while (_gameState == 0)
+	
+	Game state;
+	state._gameState = state.Playing;
+
+	while (state._gameState == state.Playing)
 	{
+		
 		int col{ 0 };
 		col = players[player].getMove();
-
+		
 		if (!C4.isEmpty(0, col)){ continue; }
 
 		C4.DropPiece(col, players[player].getToken(player));

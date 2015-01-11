@@ -1,9 +1,9 @@
 #pragma once
 
 
-class Player : public Board
+class Player : 
+	public Board
 {
-	//friend class Board;
 public:
 	Player();
 

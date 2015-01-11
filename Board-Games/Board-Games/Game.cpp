@@ -16,8 +16,9 @@ void Game::Start()
 		gameLoop();
 	}
 
-	close();
-	
+	// Moved Close() to showingMenu().
+	// result->Run() had no function to call therfor threw and error. 
+
 	return;
 }
 
@@ -37,8 +38,8 @@ void Game::gameLoop()
 {
 	GameBase* result = showMenu();
 	result->Run();
-	//_gameState = Exiting;   //<-- uncomment to have game auto exit.
-	//add something to "Play again?"
+	
+	// TODO: Add something to "Play again?"
 }
 
 GameBase* Game::showMenu()
@@ -67,16 +68,28 @@ GameBase* Game::showMenu()
 			_gameState = Game::Playing;
 			return new TicTacToe(); 
 
-		case 3: _gameState = Game::Exiting; break;
+		case 3: 
+			_gameState = Game::Exiting; 
+			return new Game();
+
 		default: continue;
 		}
 	}
+}
+
+int Game::Run()
+{
+	Game::close();
+	return 0;
 }
 
 void Game::close()
 {
 	// just to throw an error
 	if (_gameState == Uninitialized) { cout << "/t !! Nothing was evaluated in start() !!"; }
+
+	_gameState = Exiting;
+	cout << "\t !! Thanks for Playing !! ";
 
 	cin.get();
 	return;
