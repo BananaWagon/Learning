@@ -212,9 +212,13 @@ bool Board::DropPiece(int move, string token)
 void Board::Fall(int x, int y, string token)
 {
 	Board::pos[x][y] = token;
+
+	if (token == "X")	{ Board::ipos[x][y] = Taken_X; }
+	if (token == "O")	{ Board::ipos[x][y] = Taken_O; }
+
 	Board::drawBoard();
-	if (x != 0){ Board::pos[--x][y] = " "; };
 	
+	if (x != 0) { Board::pos[--x][y] = " "; Board::ipos[x][y] = Empty; };
 }
 
 void Board::Color(int color)
