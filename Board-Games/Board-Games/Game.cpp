@@ -16,9 +16,6 @@ void Game::Start()
 		gameLoop();
 	}
 
-	// Moved Close() to showingMenu().
-	// result->Run() had no function to call therfor threw and error. 
-
 	return;
 }
 
@@ -44,14 +41,17 @@ void Game::gameLoop()
 
 GameBase* Game::showMenu()
 {
+	Board M;
 	int result{ 0 };
 	while (result == 0)
 	{
+		M.Color(M.CYAN);
 		cout << "\t\t    --------------- \n";
-		cout << "\t\t_-/||  X BOARD X  ||\n";
-		cout << "\t\t   ||    X @ X    ||\n";
-		cout << "\t\t   ||  X GAMES X  ||/-_\n";
+		cout << "\t\t_-/||"; M.Color(M.RED); cout << "  X"; M.Color(M.BRT_RED); cout << " BOARD"; M.Color(M.DRK_YELLOW); cout << " X"; M.Color(M.CYAN); cout << "  || \n";
+		cout << "\t\t   ||"; M.Color(M.BRT_RED); cout << "    X"; M.Color(M.BRT_CYAN); cout << " @"; M.Color(M.YELLOW); cout << " X"; M.Color(M.CYAN); cout << "    || \n";
+		cout << "\t\t   ||"; M.Color(M.RED); cout << "  X"; M.Color(M.YELLOW); cout << " GAMES"; M.Color(M.DRK_YELLOW); cout << " X"; M.Color(M.CYAN); cout << "  ||/-_\n";
 		cout << "\t\t    ---------------\n\n";
+		M.Color(M.DEFAULT);
 
 		cout << "1. Connect Four\n";
 		cout << "2. Tic Tac Toe\n";

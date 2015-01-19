@@ -161,7 +161,6 @@ bool Board::chkWin(string token)
 
 bool Board::isEmpty(int Row, int Col)
 {
-	
 	switch (Board::ipos[Row][Col]){
 
 	case Empty: return true;

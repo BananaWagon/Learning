@@ -14,6 +14,7 @@ ConnectFour::~ConnectFour()
 
 int ConnectFour::Run()
 {
+
 	C4.setSize(8, 9);
 	drawBoard();
 
@@ -47,16 +48,20 @@ void ConnectFour::drawBoard()
 {
 	C4.ClearScreen();
 
-	std::cout << "\n   1   2   3   4   5   6   7   8   9\n";
+	C4.Color(C4.RED);
+	std::cout << "\n   1   2   3   4   5   6   7   8   9\n"; 
+	C4.Color(C4.CYAN);
+	
 	for (int i = 0; i < 8; i++)
 	{
 		for (int j = 0; j < 9; j++)
 		{
 			if (j == 0){ std::cout << " |"; }
-			std::cout << " " << C4.drawTile(i, j) << ""; C4.Color(C4.DEFAULT); std::cout << " |";
+			std::cout << " " << C4.drawTile(i, j) << ""; C4.Color(C4.CYAN); std::cout << " |";
 		}
 		std::cout << "\n";
 	}
+	C4.Color(C4.DEFAULT);
 }
 
 bool ConnectFour::DropPiece(int move, std::string token)
