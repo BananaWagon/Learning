@@ -6,5 +6,6 @@ public:
 	GameBase();
 	~GameBase();
 	virtual int Run();
+	virtual void drawBoard();
 };
 

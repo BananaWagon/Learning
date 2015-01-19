@@ -16,3 +16,8 @@ int GameBase::Run()
 {
 	return 0;
 }
+
+void GameBase::drawBoard()
+{
+
+}
