@@ -90,88 +90,6 @@ void Board::ClearScreen()
 	SetConsoleCursorPosition(hStdOut, homeCoords);
 }
 
-
-void Board::drawBoard()
-{
-	ClearScreen();
-
-	// Below was very complicated and does not work for any other size so I put it in an if statement.
-	// For text based games the draw board function will have to be made around the board size.
-
-	if (bRow && bCol == 8){
-		for (int i = 0; i < bRow; i++)
-		{
-			for (int k = 0; k < bRow; k++)
-			{
-				if (k == bRow - 2){ cout << "\t\t\t\t\t     "; break; }
-				if (k == 0){ cout << "\n\t\t        |"; }
-				cout << "     |";
-			}
-			for (int j = 0; j < bCol; j++)
-			{
-				if (j == bCol - 1){ cout << Board::pos[i][j] << "\n"; break; }
-				cout << Board::pos[i][j] << "  |  ";
-
-			}
-			cout << "\t\t   ";
-			if (i < bRow){
-				for (int k = 0; k < bRow; k++)
-				{
-					if (k == bRow - 1){ cout << "_____"; break; }
-					cout << "_____|";
-				}
-				for (int k = 0; k < bRow; k++)
-				{
-					if (k == bRow - 2){ cout << ""; break; }
-					if (k == 0){ cout << "\t\t\t\t        |"; }
-					cout << "     |";
-				}
-			}// My head hurts
-		}
-	}
-	
-	if (bRow && bCol == 3)
-	{
-		char index[3][3]
-		{ {'1', '2', '3'},
-		{ '4', '5', '6' },
-		{ '7', '8', '9' } };
-
-		// Chose to use a visual index. Made the board look cleaner.
-		cout << "      board index\n";
-		cout << "\n     " << index[0][0] << "  |  " << index[0][1] << "  |  " << index[0][2] << "  \n";
-		cout << "\n     " << index[1][0] << "  |  " << index[1][1] << "  |  " << index[1][2] << "  \n";
-		cout << "\n     " << index[2][0] << "  |  " << index[2][1] << "  |  " << index[2][2] << "  \n\n";
-
-		
-		cout << "\n";
-
-
-		cout << "\t\t        |     |     \n";
-		cout << "\t\t     " << Board::pos[0][0] << "  |  " << Board::pos[0][1] << "  |  " << Board::pos[0][2] << "  \n";
-		cout << "\t\t   _____|_____|_____\n";
-		cout << "\t\t        |     |     \n";
-		cout << "\t\t     " << Board::pos[1][0] << "  |  " << Board::pos[1][1] << "  |  " << Board::pos[1][2] << "  \n";
-		cout << "\t\t   _____|_____|_____\n";
-		cout << "\t\t        |     |     \n";
-		cout << "\t\t     " << Board::pos[2][0] << "  |  " << Board::pos[2][1] << "  |  " << Board::pos[2][2] << "  \n";
-		cout << "\t\t        |     |     \n\n";
-	}
-	
-	if (bRow == 8 && bCol == 9){
-		cout << "\n   1   2   3   4   5   6   7   8   9\n";
-		for (int i = 0; i < 8; i++)
-		{
-			for (int j = 0; j < 9; j++)
-			{
-				if (j == 0){ cout << " |"; }
-				cout << " " << Board::drawTile(i, j) <<""; Color(piece.DEFAULT); cout << " |";
-			}
-			cout << "\n";
-		}
-	}
-}
-
 void Board::printArray(int bRow, int bCol)
 {
 	// tests initialized values for array. Far from polished...
@@ -184,41 +102,6 @@ void Board::printArray(int bRow, int bCol)
 			std::cout << i << " x " << j << pos[i][j] << " " << '\t';
 		}
 	}
-}
-
-
-bool Board::DropPiece(int move, string token)
-{
-	if (ipos[0][move] != Empty){ return false; }
-
-	for (int i = 0; i < 8; i++)
-	{
-		switch (ipos[i][move])
-		{
-		case Empty: 
-			Board::Fall(i, move, token);
-			if (i == 7){ setMove(7, move, token); return true; }
-			break;
-
-		default: 
-			//bounce
-			--i; setMove(i, move, token); return true;
-		}
-
-	}
-	return false;
-}
-
-void Board::Fall(int x, int y, string token)
-{
-	Board::pos[x][y] = token;
-
-	if (token == "X")	{ Board::ipos[x][y] = Taken_X; }
-	if (token == "O")	{ Board::ipos[x][y] = Taken_O; }
-
-	Board::drawBoard();
-	
-	if (x != 0) { Board::pos[--x][y] = " "; Board::ipos[x][y] = Empty; };
 }
 
 void Board::Color(int color)
@@ -237,15 +120,16 @@ string Board::drawTile(int x, int y)
 		
 
 	case Taken_X:
-		Color(piece.RED);
+		Color(RED);
 		return Board::pos[x][y];
 		
 		
 	case Taken_O:
-		Color(piece.DRK_YELLOW);
+		Color(DRK_YELLOW);
 		return Board::pos[x][y];
 		
 	}
+	return "?";
 }
 
 void Board::setMove(int Row, int Col, string token)
