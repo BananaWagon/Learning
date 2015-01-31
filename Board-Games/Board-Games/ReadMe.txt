@@ -12,6 +12,6 @@ The program contains the following board games.
 TODO List:
 Note: All TODO items have comments in the code starting with TODO:
 In ConnectFour class change it so players can exit the game. (ConnectFour.cpp Line 24)
-Add a TicTacToe class (Game.cpp Line 65)
+
 
 /////////////////////////////////////////////////////////////////////////////

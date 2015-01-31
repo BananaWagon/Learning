@@ -88,3 +88,42 @@ void TicTacToe::drawBoard()
 				cout << "\t\t     " << TTT.drawTile(2, 0) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(2, 1) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(2, 2) << ""; TTT.Color(TTT.DEFAULT);  cout << "  \n";
 				cout << "\t\t        |     |     \n\n";
 }
+
+int TicTacToe::minimax(int node, int depth, bool maximizingPlayer)
+{
+	int bestValue = {};
+	int val = {};
+
+	if (depth == 0 || chkWin())
+	{
+		//return the heuristic value of node
+	}
+	
+	if (maximizingPlayer == false)
+	{
+		bestValue = -100;
+
+			for (int child = 0; child < depth; child++)
+			{
+				val = minimax(child, depth - 1, FALSE);
+				bestValue = max(bestValue, val);
+
+				return bestValue;
+			}
+				
+	}
+
+	else
+	{
+		bestValue = +100;
+
+			for (int child = 0; child < depth; child++)
+			{
+				val = minimax(child, depth - 1, TRUE);
+				bestValue = min(bestValue, val);
+
+				return bestValue;
+			}
+	}
+	
+}

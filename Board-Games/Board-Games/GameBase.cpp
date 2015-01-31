@@ -21,3 +21,8 @@ void GameBase::drawBoard()
 {
 
 }
+
+int GameBase::minimax(int, int, bool)
+{
+	return 0;
+}
