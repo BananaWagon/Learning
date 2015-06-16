@@ -4,8 +4,6 @@
 
 using namespace std;
 
-
-
 void Game::Start()
 {
 	// This is universal and can be used in other programs
