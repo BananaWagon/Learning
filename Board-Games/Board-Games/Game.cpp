@@ -43,6 +43,7 @@ GameBase* Game::showMenu()
 	int result{ 0 };
 	while (result == 0)
 	{
+		M.ClearScreen();
 		M.Color(M.CYAN);
 		cout << "\t\t    --------------- \n";
 		cout << "\t\t_-/||"; M.Color(M.RED); cout << "  X"; M.Color(M.BRT_RED); cout << " BOARD"; M.Color(M.DRK_YELLOW); cout << " X"; M.Color(M.CYAN); cout << "  || \n";

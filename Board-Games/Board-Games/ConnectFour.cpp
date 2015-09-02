@@ -29,9 +29,11 @@ int ConnectFour::Run()
 	while (state._gameState == state.Playing)
 	{
 		
-		int col{ 0 };
-		col = players[player].getMove();
+		int col	{ 0 };
+		col =	players[player].getMove();
 		
+		if (col == 99)	{state._gameState = state.ShowingMenu;}
+
 		if (!C4.isEmpty(0, col)){ continue; }
 
 		DropPiece(col, players[player].getToken(player));

@@ -31,6 +31,16 @@ public:
 	int ipos[100][100]; 
 	bool isEmpty(int, int);
 
+	enum rPosition {
+		TOP,
+		rCENTER,
+		BOTTOM
+	}r;
+	enum cPosition {
+		RIGHT,
+		cCENTER, 
+		LEFT
+	}c;
 	enum Color {
 		BLUE = 1, GREEN, CYAN, RED, PURPLE, DRK_YELLOW, DEFAULT, GRAY,
 		BRT_BLUE, BRT_GREEN, BRT_CYAN, BRT_RED, MAGENTA, YELLOW, BRT_WHITE
