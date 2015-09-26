@@ -143,13 +143,13 @@ bool Board::chkWin(string token)
 {
 	// checks all possible combos to token which is passed in by getToken "X" or "O"
 	if ((pos[0][0] == token && pos[0][0] == pos[0][1] && pos[0][1] == pos[0][2] ||
-		pos[1][0] == token && pos[1][0] == pos[1][1] && pos[1][1] == pos[1][2] ||
-		pos[2][0] == token && pos[2][0] == pos[2][1] && pos[2][1] == pos[2][2] ||
-		pos[0][0] == token && pos[0][0] == pos[1][0] && pos[1][0] == pos[2][0] ||
-		pos[0][1] == token && pos[0][1] == pos[1][1] && pos[1][1] == pos[2][1] ||
-		pos[0][2] == token && pos[0][2] == pos[1][2] && pos[1][2] == pos[2][2] ||
-		pos[0][0] == token && pos[0][0] == pos[1][1] && pos[1][1] == pos[2][2] ||
-		pos[2][0] == token && pos[2][0] == pos[1][1] && pos[1][1] == pos[0][2]))
+		 pos[1][0] == token && pos[1][0] == pos[1][1] && pos[1][1] == pos[1][2] ||
+		 pos[2][0] == token && pos[2][0] == pos[2][1] && pos[2][1] == pos[2][2] ||
+		 pos[0][0] == token && pos[0][0] == pos[1][0] && pos[1][0] == pos[2][0] ||
+		 pos[0][1] == token && pos[0][1] == pos[1][1] && pos[1][1] == pos[2][1] ||
+		 pos[0][2] == token && pos[0][2] == pos[1][2] && pos[1][2] == pos[2][2] ||
+		 pos[0][0] == token && pos[0][0] == pos[1][1] && pos[1][1] == pos[2][2] ||
+		 pos[2][0] == token && pos[2][0] == pos[1][1] && pos[1][1] == pos[0][2]))
 	{
 		cout << "\t\t\t" << token << " wins!!";
 		cin.get();

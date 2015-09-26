@@ -3,6 +3,7 @@
 class Player : 
 	public Board
 {
+	
 public:
 	Player();
 
@@ -22,4 +23,4 @@ private:
 
 
 
-};
+}_player;

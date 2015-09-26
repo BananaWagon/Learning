@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "GameBase.h"
 #include "Board.h"
 
@@ -11,7 +11,11 @@ public:
 	~TicTacToe();
 	int Run();
 	void drawBoard();
+	bool chkWin();
+	int alphabeta(int node, int depth, int α, int β, bool maximizingPlayer);
 
 private:
 	int _gameState;
+		
 };
+

@@ -21,3 +21,8 @@ void GameBase::drawBoard()
 {
 
 }
+
+int GameBase::alphabeta()
+{
+	return 0;
+}
