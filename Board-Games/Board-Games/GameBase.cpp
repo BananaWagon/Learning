@@ -22,7 +22,7 @@ void GameBase::drawBoard()
 
 }
 
-int GameBase::minimax(int, int, bool)
+int GameBase::alphabeta()
 {
 	return 0;
 }

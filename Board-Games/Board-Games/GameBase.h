@@ -7,7 +7,7 @@ public:
 	~GameBase();
 	virtual int Run();
 	virtual void drawBoard();
-	virtual int minimax(int, int, bool);
+	virtual int alphabeta();
 	virtual bool chkWin();
 };
 

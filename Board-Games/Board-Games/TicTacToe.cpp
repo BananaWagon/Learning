@@ -19,10 +19,6 @@ int TicTacToe::Run()
 	TTT.setSize(3, 3);
 	drawBoard();
 
-
-
-	Player _player;
-
 	// This is the actual game loop. Total of 9 turns.
 
 	// Consider making a loop to get inputs, update, draw. Could make the code below easier.
@@ -89,40 +85,40 @@ void TicTacToe::drawBoard()
 				cout << "\t\t        |     |     \n\n";
 }
 
-int TicTacToe::minimax(int node, int depth, bool maximizingPlayer)
+int TicTacToe::alphabeta(int node, int depth, int ?, int ?, bool maximizingPlayer)
 {
-	int bestValue = {};
 	int val = {};
 
-	if (depth == 0 || chkWin())
+	if (depth == 0 || TTT.chkWin(_player.getToken(_player._playerState)))
 	{
-		//return the heuristic value of node
+		// return value for current player, ? = X and ? = O
+		return /*heuristic value of node*/ ;
 	}
 	
-	if (maximizingPlayer == false)
+	if (maximizingPlayer)
 	{
-		bestValue = -100;
-
-			for (int child = 0; child < depth; child++)
+		val = -100;
+		
+		for (int child = 0; child < depth; child++)
 			{
-				val = minimax(child, depth - 1, FALSE);
-				bestValue = max(bestValue, val);
-
-				return bestValue;
+				val =	alphabeta(child, depth - 1, ?, ?, FALSE);
+				? =		max(?, val);
+				if (? <= ?) { break; }
+				return val;
 			}
 				
 	}
 
 	else
 	{
-		bestValue = +100;
+		val = 100;
 
 			for (int child = 0; child < depth; child++)
 			{
-				val = minimax(child, depth - 1, TRUE);
-				bestValue = min(bestValue, val);
-
-				return bestValue;
+				val =	alphabeta(child, depth - 1, ?, ?, TRUE);
+				? =		min(?, val);
+				if (? <= ?) { break; }
+				return val;
 			}
 	}
 	
