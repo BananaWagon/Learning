@@ -34,7 +34,7 @@ int TicTacToe::Run()
 			{
 
 				_player.whosTurn();
-				_player.getMove();
+				if (_player.getMove() == 99) { _gameState = Game::ShowingMenu; return 1; }
 
 				if (TTT.isEmpty(_player.getRow(), _player.getCol()))
 				{

@@ -4,8 +4,8 @@
 
 Player::Player()
 {	
-	ipos[100][100] = { 0 };
-	playerToken = " ";
+	ipos[100][100] =	{ 0 };
+	playerToken =		" ";
 }
 
 void Player::setState()
@@ -25,8 +25,8 @@ void Player::whosTurn()
 {
 	switch (_playerState)
 	{
-	case Player1: std::cout << "Player X move: "; break;
-	case Player2: std::cout << "Player O move: "; break;
+	case Player1:		std::cout << "Player X move: "; break;
+	case Player2:		std::cout << "Player O move: "; break;
 	}
 }
 
@@ -34,8 +34,8 @@ std::string Player::getToken(int player)
 {
 	switch (player){
 	
-	case 0: playerToken = "X"; return playerToken;
-	case 1: playerToken = "O"; return playerToken;
+	case Player1:		playerToken = "X"; return playerToken;
+	case Player2:		playerToken = "O"; return playerToken;
 	}
 	return "?";
 }
@@ -48,16 +48,17 @@ int Player::getMove()
 	
 	switch (move){
 	
-	case '1': Board::setRow(0); Board::setCol(0); return 0;
-	case '2': Board::setRow(0); Board::setCol(1); return 1;
-	case '3': Board::setRow(0); Board::setCol(2); return 2;
-	case '4': Board::setRow(1); Board::setCol(0); return 3;
-	case '5': Board::setRow(1); Board::setCol(1); return 4;
-	case '6': Board::setRow(1); Board::setCol(2); return 5;
-	case '7': Board::setRow(2); Board::setCol(0); return 6;
-	case '8': Board::setRow(2); Board::setCol(1); return 7;
-	case '9': Board::setRow(2); Board::setCol(2); return 8;
-	default: if (move > 9){ std::cout << "!! Not a valid choice...\n"; };
+	case '1':			Board::setRow(TOP);		Board::setCol(RIGHT);	return 0;
+	case '2':			Board::setRow(TOP);		Board::setCol(cCENTER);	return 1;
+	case '3':			Board::setRow(TOP);		Board::setCol(LEFT);	return 2;
+	case '4':			Board::setRow(rCENTER);	Board::setCol(RIGHT);	return 3;
+	case '5':			Board::setRow(rCENTER);	Board::setCol(cCENTER);	return 4;
+	case '6':			Board::setRow(rCENTER);	Board::setCol(LEFT);	return 5;
+	case '7':			Board::setRow(BOTTOM);	Board::setCol(RIGHT);	return 6;
+	case '8':			Board::setRow(BOTTOM);	Board::setCol(cCENTER);	return 7;
+	case '9':			Board::setRow(BOTTOM);	Board::setCol(LEFT);	return 8;
+	case 'q':			return 99;
+	default:			if (move > 9){ std::cout << "!! Not a valid choice...\n"; };
 	}
 	
 	return 42;
