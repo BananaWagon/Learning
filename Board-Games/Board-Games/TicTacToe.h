@@ -12,7 +12,7 @@ public:
 	int Run();
 	void drawBoard();
 	bool chkWin();
-	int alphabeta(int node, int depth, int α, int β, bool maximizingPlayer);
+	int alphabeta(int node, int depth, int a, int b, bool maximizingPlayer);
 
 private:
 	int _gameState;

@@ -26,8 +26,8 @@ void Board::setSize(int Row, int Col)
 				   has a problem at 127, it moves to -127 and if printed you get
 				   random characters. char can only take single char if initialized to literal 1 / 9
 				   and not anything higher than that.*/
-			Board::pos[i][j] = " ";
-			Board::ipos[i][j] = Empty;
+			Board::pos[i][j]	= " ";
+			Board::ipos[i][j]	= Empty;
 		}
 	}
 }
@@ -135,7 +135,7 @@ string Board::drawTile(int x, int y)
 void Board::setMove(int Row, int Col, string token)
 {
 	pos[Row][Col] = token;
-	if (token == "X") { ipos[Row][Col] = Taken_X; }
+	if		(token == "X") { ipos[Row][Col] = Taken_X; }
 	else if (token == "O") { ipos[Row][Col] = Taken_O; }
 }
 
@@ -163,9 +163,9 @@ bool Board::isEmpty(int Row, int Col)
 {
 	switch (Board::ipos[Row][Col]){
 
-	case Empty: return true;
-	case Taken_X: cout << "\n\t  !! Slot Full !!\n"; return false;
-	case Taken_O: cout << "\n\t  !! Slot Full !!\n"; return false;
+	case Empty:		return true;
+	case Taken_X:	cout << "\n\t  !! Slot Full !!\n"; return false;
+	case Taken_O:	cout << "\n\t  !! Slot Full !!\n"; return false;
 	}
 	return false;
 }

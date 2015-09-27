@@ -8,7 +8,7 @@ public:
 	virtual int Run();
 	virtual void drawBoard();
 	virtual int alphabeta();
-	virtual bool chkWin();
+	//virtual bool chkWin();
 };
 
 ///////////////////////////////////////////////////////////////

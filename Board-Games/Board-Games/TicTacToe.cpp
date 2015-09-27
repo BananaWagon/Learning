@@ -85,41 +85,41 @@ void TicTacToe::drawBoard()
 				cout << "\t\t        |     |     \n\n";
 }
 
-int TicTacToe::alphabeta(int node, int depth, int ?, int ?, bool maximizingPlayer)
+int TicTacToe::alphabeta(int node, int depth, int a, int b, bool maximizingPlayer)
 {
-	int val = {};
+	//int val = {};
 
-	if (depth == 0 || TTT.chkWin(_player.getToken(_player._playerState)))
-	{
-		// return value for current player, ? = X and ? = O
-		return /*heuristic value of node*/ ;
-	}
-	
-	if (maximizingPlayer)
-	{
-		val = -100;
-		
-		for (int child = 0; child < depth; child++)
-			{
-				val =	alphabeta(child, depth - 1, ?, ?, FALSE);
-				? =		max(?, val);
-				if (? <= ?) { break; }
-				return val;
-			}
-				
-	}
+	//if (depth == 0 || TTT.chkWin(_player.getToken(_player._playerState)))
+	//{
+	//	// return value for current player, ? = X and ? = O
+	//	return /*heuristic value of node*/ 1000 ;
+	//}
+	//
+	//if (maximizingPlayer)
+	//{
+	//	val = -100;
+	//	
+	//	for (int child = 0; child < depth; child++)
+	//		{
+	//			val =	alphabeta(child, depth - 1, a, b, FALSE);
+	//			a =		max(a, val);
+	//			if (b <= a) { break; }
+	//			return val;
+	//		}
+	//			
+	//}
 
-	else
-	{
-		val = 100;
+	//else
+	//{
+	//	val = 100;
 
-			for (int child = 0; child < depth; child++)
-			{
-				val =	alphabeta(child, depth - 1, ?, ?, TRUE);
-				? =		min(?, val);
-				if (? <= ?) { break; }
-				return val;
-			}
-	}
-	
+	//		for (int child = 0; child < depth; child++)
+	//		{
+	//			val =	alphabeta(child, depth - 1, a, b, TRUE);
+	//			b =		min(b, val);
+	//			if (b <= a) { break; }
+	//			return val;
+	//		}
+	//}
+	return 42;
 }

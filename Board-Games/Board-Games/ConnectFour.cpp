@@ -18,8 +18,8 @@ int ConnectFour::Run()
 	C4.setSize(8, 9);
 	drawBoard();
 
-	Player players[2];
-	int player{ 0 };
+	Player	players[2];
+	int		player{ 0 };
 
 	//TODO: Change the GameState so the players can exit
 	

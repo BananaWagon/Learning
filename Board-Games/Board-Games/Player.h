@@ -13,7 +13,7 @@ public:
 	void whosTurn();
 	std::string getToken(int);
 	int getMove();
-	char chkMove();
+	//char chkMove();
 	
 	~Player();
 
