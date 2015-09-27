@@ -7,8 +7,8 @@ using namespace std;
 Board::Board()
 {
 	Board::_square = Empty;
-	Board::nRow = { 0 };
-	Board::nCol = { 0 };
+	Board::nRow =	 { 0 };
+	Board::nCol =	 { 0 };
 }
 
 void Board::setSize(int Row, int Col)
@@ -135,7 +135,7 @@ string Board::drawTile(int x, int y)
 void Board::setMove(int Row, int Col, string token)
 {
 	pos[Row][Col] = token;
-	if (token == "X") { ipos[Row][Col] = Taken_X; }
+	if		(token == "X") { ipos[Row][Col] = Taken_X; }
 	else if (token == "O") { ipos[Row][Col] = Taken_O; }
 }
 
@@ -143,13 +143,13 @@ bool Board::chkWin(string token)
 {
 	// checks all possible combos to token which is passed in by getToken "X" or "O"
 	if ((pos[0][0] == token && pos[0][0] == pos[0][1] && pos[0][1] == pos[0][2] ||
-		pos[1][0] == token && pos[1][0] == pos[1][1] && pos[1][1] == pos[1][2] ||
-		pos[2][0] == token && pos[2][0] == pos[2][1] && pos[2][1] == pos[2][2] ||
-		pos[0][0] == token && pos[0][0] == pos[1][0] && pos[1][0] == pos[2][0] ||
-		pos[0][1] == token && pos[0][1] == pos[1][1] && pos[1][1] == pos[2][1] ||
-		pos[0][2] == token && pos[0][2] == pos[1][2] && pos[1][2] == pos[2][2] ||
-		pos[0][0] == token && pos[0][0] == pos[1][1] && pos[1][1] == pos[2][2] ||
-		pos[2][0] == token && pos[2][0] == pos[1][1] && pos[1][1] == pos[0][2]))
+		 pos[1][0] == token && pos[1][0] == pos[1][1] && pos[1][1] == pos[1][2] ||
+		 pos[2][0] == token && pos[2][0] == pos[2][1] && pos[2][1] == pos[2][2] ||
+		 pos[0][0] == token && pos[0][0] == pos[1][0] && pos[1][0] == pos[2][0] ||
+		 pos[0][1] == token && pos[0][1] == pos[1][1] && pos[1][1] == pos[2][1] ||
+		 pos[0][2] == token && pos[0][2] == pos[1][2] && pos[1][2] == pos[2][2] ||
+		 pos[0][0] == token && pos[0][0] == pos[1][1] && pos[1][1] == pos[2][2] ||
+		 pos[2][0] == token && pos[2][0] == pos[1][1] && pos[1][1] == pos[0][2]))
 	{
 		cout << "\t\t\t" << token << " wins!!";
 		cin.get();
@@ -163,9 +163,9 @@ bool Board::isEmpty(int Row, int Col)
 {
 	switch (Board::ipos[Row][Col]){
 
-	case Empty: return true;
-	case Taken_X: cout << "\n\t  !! Slot Full !!\n"; return false;
-	case Taken_O: cout << "\n\t  !! Slot Full !!\n"; return false;
+	case Empty:		return true;
+	case Taken_X:	cout << "\n\t  !! Slot Full !!\n"; return false;
+	case Taken_O:	cout << "\n\t  !! Slot Full !!\n"; return false;
 	}
 	return false;
 }
