@@ -151,6 +151,7 @@ bool Board::chkWin(string token)
 		 pos[0][0] == token && pos[0][0] == pos[1][1] && pos[1][1] == pos[2][2] ||
 		 pos[2][0] == token && pos[2][0] == pos[1][1] && pos[1][1] == pos[0][2]))
 	{
+		
 		cout << "\t\t\t" << token << " wins!!";
 		cin.get();
 		return true;

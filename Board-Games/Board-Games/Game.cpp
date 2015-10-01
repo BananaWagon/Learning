@@ -17,6 +17,17 @@ void Game::Start()
 	return;
 }
 
+int Game::getState()
+{
+	int state = _gameState;
+	return state;
+}
+
+void Game::setState(GameState state)
+{
+	_gameState = state;
+}
+
 bool Game::IsExiting()
 {
 	if (_gameState == Game::Exiting)

@@ -8,11 +8,12 @@ Player::Player()
 	playerToken =		" ";
 }
 
-void Player::setState()
+void Player::setState(int state)
 {
 	// checks player state and sets to opposite player
+	// default state is Uninitialized unless specified
 
-	switch (_playerState)
+	switch (state)
 	{
 	case Uninitialized: _playerState = Player1; break;
 	case Player1:		_playerState = Player2; break;
@@ -57,7 +58,7 @@ int Player::getMove()
 	case '7':			Board::setRow(BOTTOM);	Board::setCol(RIGHT);	return 6;
 	case '8':			Board::setRow(BOTTOM);	Board::setCol(cCENTER);	return 7;
 	case '9':			Board::setRow(BOTTOM);	Board::setCol(LEFT);	return 8;
-	case 'q':			return 99;
+	case 'q':			Current._gameState = Current.ShowingMenu;		return 99;
 	default:			if (move > 9){ std::cout << "!! Not a valid choice...\n"; };
 	}
 	

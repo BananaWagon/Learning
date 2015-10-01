@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "TicTacToe.h"
+//#include "TicTacToe.h"
 
 using namespace std;
 
@@ -18,38 +18,41 @@ int TicTacToe::Run()
 	
 	TTT.setSize(3, 3);
 	drawBoard();
+	_player.setState();
 
 	// This is the actual game loop. Total of 9 turns.
-
-	// Consider making a loop to get inputs, update, draw. Could make the code below easier.
 	for (int i = 0; i < 3; i++)
 	{
 		for (int j = 0; j < 3; j++)
 		{
-			//sets player state after loop back
-			_player.setState();
-
-			// Loop will not break unless chkMove evaluates to true
-			while (_player._playerState == Player::Player1 || Player::Player2)
-			{
-
-				_player.whosTurn();
-				if (_player.getMove() == 99) { _gameState = Game::ShowingMenu; return 1; }
-
-				if (TTT.isEmpty(_player.getRow(), _player.getCol()))
-				{
-					TTT.setMove(_player.getRow(), _player.getCol(), _player.getToken(_player._playerState));
-
-					drawBoard();
-
-					if (TTT.chkWin(_player.getToken(_player._playerState))) { _gameState = Game::ShowingMenu; std::cin.get(); TTT.ClearScreen(); return 1; }
-
-					break;
-				}
-				continue;
+			
+			_player.setState(_player._playerState);
+			input();
+			update();
+			drawBoard();
+			
+			if (TTT.chkWin(_player.getToken(_player._playerState))) { 
+				_gameState = Game::ShowingMenu; 
+				std::cin.get(); 
+				TTT.ClearScreen();  
+				return 1; 
 			}
+			
+			
 		}
 	}
+	return 1;
+}
+
+void TicTacToe::input()
+{
+	_player.whosTurn();
+	_player.getMove();
+}
+
+void TicTacToe::update()
+{
+	if (TTT.isEmpty(_player.getRow(), _player.getCol()))	{ TTT.setMove(_player.getRow(), _player.getCol(), _player.getToken(_player._playerState)); }
 }
 
 void TicTacToe::drawBoard()

@@ -5,9 +5,12 @@ class GameBase
 public:
 	GameBase();
 	~GameBase();
-	virtual int Run();
-	virtual void drawBoard();
-	virtual int alphabeta();
+	virtual int		Run();
+	virtual void	input();
+	virtual void	update();
+	virtual void	drawBoard();
+	virtual int		alphabeta();
+	
 	//virtual bool chkWin();
 };
 
