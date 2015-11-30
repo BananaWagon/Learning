@@ -61,7 +61,7 @@ GameBase* Game::showMenu()
 		cout << "\t\t   ||"; M.Color(M.BRT_RED); cout << "    X"; M.Color(M.BRT_CYAN); cout << " @"; M.Color(M.YELLOW); cout << " X"; M.Color(M.CYAN); cout << "    || \n";
 		cout << "\t\t   ||"; M.Color(M.RED); cout << "  X"; M.Color(M.YELLOW); cout << " GAMES"; M.Color(M.DRK_YELLOW); cout << " X"; M.Color(M.CYAN); cout << "  ||/-_\n";
 		cout << "\t\t    ---------------\n\n";
-		M.Color(M.DEFAULT);
+		M.Color(M.BRT_GREEN);
 
 		cout << "1. Connect Four\n";
 		cout << "2. Tic Tac Toe\n";

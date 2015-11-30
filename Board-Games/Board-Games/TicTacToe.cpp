@@ -30,7 +30,7 @@ int TicTacToe::Run()
 			input();
 			update();
 			drawBoard();
-			
+
 			if (TTT.chkWin(_player.getToken(_player._playerState))) { 
 				_gameState = Game::ShowingMenu; 
 				std::cin.get(); 
@@ -46,17 +46,22 @@ int TicTacToe::Run()
 
 void TicTacToe::input()
 {
-	_player.whosTurn();
-	_player.getMove();
+	do
+	{
+		_player.whosTurn();
+		_player.getMove();
+		drawBoard();
+	} while (!TTT.isEmpty(_player.getRow(), _player.getCol()));
 }
 
 void TicTacToe::update()
 {
-	if (TTT.isEmpty(_player.getRow(), _player.getCol()))	{ TTT.setMove(_player.getRow(), _player.getCol(), _player.getToken(_player._playerState)); }
+	TTT.setMove(_player.getRow(), _player.getCol(), _player.getToken(_player._playerState));
 }
 
 void TicTacToe::drawBoard()
 {
+	// TODO:  Make an array to represent the entire board to draw a tile through enum. 
 	TTT.ClearScreen();
 	char index[3][3]
 				{ {'1', '2', '3'},
@@ -72,19 +77,19 @@ void TicTacToe::drawBoard()
 				cout << "\n     " << index[0][0] << "  |  " << index[0][1] << "  |  " << index[0][2] << "  \n";
 				cout << "\n     " << index[1][0] << "  |  " << index[1][1] << "  |  " << index[1][2] << "  \n";
 				cout << "\n     " << index[2][0] << "  |  " << index[2][1] << "  |  " << index[2][2] << "  \n\n";
-				TTT.Color(TTT.DEFAULT);
+				TTT.Color(TTT.BRT_GREEN);
 				
 				cout << "\n";
 		
 		
 				cout << "\t\t        |     |     \n";
-				cout << "\t\t     " << TTT.drawTile(0, 0) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(0, 1) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(0, 2) << ""; TTT.Color(TTT.DEFAULT);  cout << "  \n";
+				cout << "\t\t     " << TTT.drawTile(0, 0) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  |  " << TTT.drawTile(0, 1) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  |  " << TTT.drawTile(0, 2) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  \n";
 				cout << "\t\t   _____|_____|_____\n";
 				cout << "\t\t        |     |     \n";
-				cout << "\t\t     " << TTT.drawTile(1, 0) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(1, 1) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(1, 2) << ""; TTT.Color(TTT.DEFAULT);  cout << "  \n";
+				cout << "\t\t     " << TTT.drawTile(1, 0) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  |  " << TTT.drawTile(1, 1) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  |  " << TTT.drawTile(1, 2) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  \n";
 				cout << "\t\t   _____|_____|_____\n";
 				cout << "\t\t        |     |     \n";
-				cout << "\t\t     " << TTT.drawTile(2, 0) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(2, 1) << ""; TTT.Color(TTT.DEFAULT);  cout << "  |  " << TTT.drawTile(2, 2) << ""; TTT.Color(TTT.DEFAULT);  cout << "  \n";
+				cout << "\t\t     " << TTT.drawTile(2, 0) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  |  " << TTT.drawTile(2, 1) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  |  " << TTT.drawTile(2, 2) << ""; TTT.Color(TTT.BRT_GREEN);  cout << "  \n";
 				cout << "\t\t        |     |     \n\n";
 }
 

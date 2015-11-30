@@ -65,6 +65,8 @@ public:
 	enum Square { 
 		Empty, 
 		Taken_X, 
-		Taken_O 
+		Taken_O,
+		V_Frame,
+		H_Frame
 	}_square;
 };

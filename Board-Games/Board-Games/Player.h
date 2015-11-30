@@ -9,14 +9,16 @@ class Player :
 public:
 	Player();
 
-	enum state { Player1, Player2, Uninitialized};
-	Player::state _playerState;
+	enum state { 
+		Player1, 
+		Player2, 
+		Uninitialized };
+	state _playerState;
 	void		setState(int state = Uninitialized);
 	void		whosTurn();
-	std::string getToken(int);
+	std::string	getToken(int);
 	int			getMove();
-	//char chkMove();
-	
+		
 	~Player();
 
 private:

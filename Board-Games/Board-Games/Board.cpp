@@ -116,6 +116,7 @@ string Board::drawTile(int x, int y)
 	{
 	
 	case Empty:
+		Color(BRT_GREEN);
 		return Board::pos[x][y];
 		
 
